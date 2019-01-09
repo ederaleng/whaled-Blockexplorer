@@ -8,7 +8,7 @@ const Nav = () => {
             <b>WhaleD</b>
         </a>
         <form className="form-inline my-2 my-lg-0">
-            <a href="https://whaleshares.io/~witnesses">Consider voting for witness @chronocrypto</a>
+            {/*<a href="https://whaleshares.io/~witnesses">Consider voting for witness @chronocrypto</a>*/}
         </form>
     </div>
     );
