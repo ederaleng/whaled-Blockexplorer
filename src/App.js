@@ -4,6 +4,7 @@ import Servicetrx from './components/servicetrx'
 import Homepage  from './components/homepage'
 import blockPage from './components/blockPage'
 import Err from './components/err'
+import Witnesses from './components/witnesses'
 import { BrowserRouter as Router, Route , Switch } from 'react-router-dom'
 
 class App extends Component {
@@ -14,7 +15,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Homepage}  />
             <Route exact path="/err" component={Err}  />
+            <Route exact path="/witnesses" component={Witnesses}  />
             <Route path="/trx/:id" component={Servicetrx}  />
+            <Route path="/block/:id" component={blockPage}  />
             <Route path="/block/:id" component={blockPage}  />
             <Route path="/:id" component={Serviceusers}  />
           </Switch>

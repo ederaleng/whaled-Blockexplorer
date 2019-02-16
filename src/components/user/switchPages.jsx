@@ -14,8 +14,8 @@ class SwitchPages extends Component {
                         <Link to={`/trx/${obj[1].trx_id}`}><span className="trxtag" >{obj[1].trx_id.substring(0,8)}</span></Link>
                         <a href={`/@${obj[1].op[1].voter}`} >{obj[1].op[1].voter}</a> 
                         {' '}<b>reward</b>{' '}
-                        <a href={`/@${obj[1].op[1].author}`}>{obj[1].op[1].author}</a><br />
-                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`} >{obj[1].op[1].permlink}</a>({`${obj[1].op[1].weight/100}%`}) - ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()})
+                        <a href={`/@${obj[1].op[1].author}`} >{obj[1].op[1].author}</a><br />
+                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`} rel='noopener noreferrer' target='_blank'>{obj[1].op[1].permlink}</a>({`${obj[1].op[1].weight/100}%`}) - ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()})
                     </p>
                     );
             case 'account_create':
@@ -32,7 +32,7 @@ class SwitchPages extends Component {
                 return (
                     <p>
                         <Link to={`/trx/${obj[1].trx_id}`}><span className="trxtag" >{obj[1].trx_id.substring(0,8)}</span></Link>
-                        <a href={`/@${obj[1].op[1].creator}`} >{obj[1].op[1].creator}</a> 
+                        <a href={`/@${obj[1].op[1].creator}`}>{obj[1].op[1].creator}</a> 
                         {' '}<b>account update</b>{' '}<br />
                         <span className="text-danger textoajust">{obj[1].op[1].json_metadata}</span>
                         ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()})
@@ -127,7 +127,7 @@ class SwitchPages extends Component {
                         <a href={`/@${obj[1].op[1].author}`} >{obj[1].op[1].author}</a> 
                         {' '}<b>Author Reward</b>{' '}
                         <span>{`${obj[1].op[1].steem_payout}, ${obj[1].op[1].vesting_payout} of`}</span> <br />
-                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`} >{obj[1].op[1].permlink}</a> -  
+                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`} rel='noopener noreferrer' target='_blank'>{obj[1].op[1].permlink}</a> -  
                         ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()}) 
                     </p>
                     );
@@ -138,7 +138,7 @@ class SwitchPages extends Component {
                         <a href={`/@${obj[1].op[1].curator}`} >{obj[1].op[1].curator}</a> 
                         {' '}<b>Curation Reward</b>{' '}
                         <span>{`${obj[1].op[1].reward} `}</span><b>From Post</b><br />
-                        <a href={`https://whaleshares.io/@${obj[1].op[1].comment_author}/${obj[1].op[1].comment_permlink}`}>{obj[1].op[1].comment_permlink}</a> <b>Of</b> <a href={`/@${obj[1].op[1].comment_author}`}>{obj[1].op[1].comment_author}</a> -  
+                        <a href={`https://whaleshares.io/@${obj[1].op[1].comment_author}/${obj[1].op[1].comment_permlink}`} rel='noopener noreferrer'  target='_blank'>{obj[1].op[1].comment_permlink}</a> <b>Of</b> <a href={`/@${obj[1].op[1].comment_author}`}>{obj[1].op[1].comment_author}</a> -  
                         ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()}) 
                     </p>
                     );
@@ -185,7 +185,7 @@ class SwitchPages extends Component {
                         {' '}<b>replied to</b>{' '}
                         <a href={`/@${obj[1].op[1].parent_author}`} >{obj[1].op[1].parent_author}</a> - 
                         ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()}) <br />
-                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`}>{obj[1].op[1].permlink}</a> 
+                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`} rel='noopener noreferrer' target='_blank'>{obj[1].op[1].permlink}</a> 
                         
                     </p>    
                 )}else{
@@ -194,7 +194,7 @@ class SwitchPages extends Component {
                         <Link to={`/trx/${obj[1].trx_id}`}><span className="trxtag" >{obj[1].trx_id.substring(0,8)}</span></Link>
                         <a href={`/@${obj[1].op[1].author}`} >{obj[1].op[1].author}</a>
                         {' '}<b>Author A Post</b>{' '}
-                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`}>{`${obj[1].op[1].permlink.substring(0,25)}...`}</a> - 
+                        <a href={`https://whaleshares.io/@${obj[1].op[1].author}/${obj[1].op[1].permlink}`} rel='noopener noreferrer' target='_blank'>{`${obj[1].op[1].permlink.substring(0,25)}...`}</a> - 
                         ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()}) 
                     </p>
                 )}
@@ -208,7 +208,7 @@ class SwitchPages extends Component {
                             {' '}<b>Shared</b>{' '}
                             <a href={`/@${trxjsonccustom[1].author}`} >{trxjsonccustom[1].author}</a> - 
                             ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()}) <br />
-                            <a href={`https://whaleshares.io/@${trxjsonccustom[1].author}/${trxjsonccustom[1].permlink}`}>{trxjsonccustom[1].permlink}</a>
+                            <a href={`https://whaleshares.io/@${trxjsonccustom[1].author}/${trxjsonccustom[1].permlink}`} rel='noopener noreferrer' target='_blank'>{trxjsonccustom[1].permlink}</a>
                         </p>
                     )
                 }
@@ -216,7 +216,7 @@ class SwitchPages extends Component {
                     return (
                         <p>
                             <Link to={`/trx/${obj[1].trx_id}`}><span className="trxtag" >{obj[1].trx_id.substring(0,8)}</span></Link>
-                            <a href={`/@${trxjsonccustom[1].follower}`} >{trxjsonccustom[1].follower}</a> 
+                            <a href={`/@${trxjsonccustom[1].follower}`}  >{trxjsonccustom[1].follower}</a> 
                             {' '}<b>{trxjsonccustom[1].what[0]==='blog' ? 'Follow' : 'Unfollow' }</b>{' '}
                             <a href={`/@${trxjsonccustom[1].following}`} >{trxjsonccustom[1].following}</a> - 
                             ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()}) 
@@ -233,7 +233,7 @@ class SwitchPages extends Component {
                 console.log(obj[1].op)
                 return (
                     <p className="textoajust">
-                    {`${obj[1].op[0]} is not defined yet please notify chronocrypto#7035 or ederaleng#0471 in discord of whaleshares to be able to implement it as soon as possible`} 
+                    {`${obj[1].op[0]} is not defined yet please notify ederaleng#0471 in discord of whaleshares to be able to implement it as soon as possible`} 
                     </p>
                 )
         }

@@ -37,7 +37,7 @@ class Trxid extends Component {
                     <div>
                         <b>Type Operations:</b><span> {data[0]} </span><br />
                         <b>Author:</b><Link to={`/@${data[1].author}`}> {data[1].author} </Link><br />
-                        <b>Permlink:</b><a href={`https://whaleshares.io/@${data[1].author}/${data[1].permlink}`}> {data[1].permlink} </a><br />
+                        <b>Permlink:</b><a href={`https://whaleshares.io/@${data[1].author}/${data[1].permlink}`} target='_blank' rel="noopener noreferrer"> {data[1].permlink} </a><br />
                         <b>Voter:</b><Link to={`/@${data[1].voter}`}> {data[1].voter} </Link><br />
                         <b>Weight:</b><span> {`${data[1].weight/100}%`} </span><br />
                     </div>
@@ -109,9 +109,9 @@ class Trxid extends Component {
                         <div>
                             <b>Type Operations:</b><span> Authored A Post </span><br />
                             <b>Parent Author:</b> {data[1].parent_author ? <Link to={`/@${data[1].parent_author}`}>{data[1].parent_author}</Link> : <span>{'null'}</span>} <br />
-                            <b>Parent Permlink:</b>{data[1].parent_permlink ? <a href={`https://whaleshares.io/@${data[1].parent_author}/${data[1].parent_permlink}`}>{data[1].parent_permlink}</a> : <span> {'null'}</span> } <br />
+                            <b>Parent Permlink:</b>{data[1].parent_permlink ? <a href={`https://whaleshares.io/@${data[1].parent_author}/${data[1].parent_permlink}`} rel='noopener noreferrer' target='_blank'>{data[1].parent_permlink}</a> : <span> {'null'}</span> } <br />
                             <b>Author:</b><Link to={`/@${data[1].author}`}> {data[1].author} </Link><br />
-                            <b>Permlink:</b><a href={`https://whaleshares.io/@${data[1].author}/${data[1].permlink}`}> {data[1].permlink} </a><br />
+                            <b>Permlink:</b><a href={`https://whaleshares.io/@${data[1].author}/${data[1].permlink}`} rel='noopener noreferrer' target='_blank'> {data[1].permlink} </a><br />
                             <b>Title:</b><span> {data[1].title ? data[1].title : 'null'} </span><br />
                         </div>    
                     )
@@ -120,9 +120,9 @@ class Trxid extends Component {
                         <div>
                             <b>Type Operations:</b><span> replied  </span><br />
                             <b>Parent Author:</b><Link to={`/@${data[1].parent_author}`}> {data[1].parent_author} </Link><br />
-                            <b>Parent Permlink:</b><a href={`https://whaleshares.io/@${data[1].parent_author}/${data[1].parent_permlink}`}> {data[1].parent_permlink} </a><br />
+                            <b>Parent Permlink:</b><a href={`https://whaleshares.io/@${data[1].parent_author}/${data[1].parent_permlink}`}  rel='noopener noreferrer' target='_blank'> {data[1].parent_permlink} </a><br />
                             <b>Author:</b><Link to={`/@${data[1].author}`}>{data[1].author} </Link><br />
-                            <b>Permlink:</b><a href={`https://whaleshares.io/@${data[1].author}/${data[1].permlink}`}> {data[1].permlink} </a><br />
+                            <b>Permlink:</b><a href={`https://whaleshares.io/@${data[1].author}/${data[1].permlink}`} rel='noopener noreferrer' target='_blank'> {data[1].permlink} </a><br />
                             <b>Title:</b><span> {data[1].title ? data[1].title : 'null'} </span><br />
                         </div>
                     )
@@ -135,7 +135,7 @@ class Trxid extends Component {
                             <b>Type Operations:</b><span> {typetrx[0]} </span><br />
                             <b>Account:</b><Link to={`/@${typetrx[1].account}`} > {typetrx[1].account} </Link><br />
                             <b>Author:</b><Link to={`/@${typetrx[1].author}`}> {typetrx[1].author} </Link><br />
-                            <b>Permlink:</b><a href={`https://whaleshares.io/@${typetrx[1].author}/${typetrx[1].permlink}`}> {typetrx[1].permlink} </a><br />
+                            <b>Permlink:</b><a href={`https://whaleshares.io/@${typetrx[1].author}/${typetrx[1].permlink}`} rel='noopener noreferrer' target='_blank'> {typetrx[1].permlink} </a><br />
                         </div>
                     )
                 }
@@ -151,13 +151,13 @@ class Trxid extends Component {
                 }else{
                     return (
                         <p className="textoajust">
-                        this type of transaction has not been defined please notify chronocrypto #7035 or ederaleng #0471 in discord to be able to implement it as soon as possible
+                        this type of transaction has not been defined please notify ederaleng #0471 in discord to be able to implement it as soon as possible
                         </p>
                     )
                 }
             default: 
                 return (
-                    <p>this type of transaction has not been defined please notify chronocrypto #7035 or ederaleng #0471 in discord to be able to implement it as soon as possible</p>
+                    <p>this type of transaction has not been defined please notify ederaleng #0471 in discord to be able to implement it as soon as possible</p>
                 )
                 
         }

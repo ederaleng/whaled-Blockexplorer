@@ -11,7 +11,7 @@ const OpenSource = () => {
                 <p>
                     <span>Check the GitHub repo and start contributing!</span>
                 </p>
-                <a href="https://github.com/chronopolis-dev/whaled" rel="noopener noreferrer" target="_blank" className="btn btn-primary">
+                <a href="https://github.com/ederaleng/whaled-Blockexplorer" rel="noopener noreferrer" target="_blank" className="btn btn-primary">
                     <span>Check GitHub</span>
                 </a>
             </center>

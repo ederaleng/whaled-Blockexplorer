@@ -33,6 +33,40 @@
 #infoWitness{
     text-align: center;
 }
+.witness{
+    width: 100%;
+    overflow-x: auto;
+}
+.table-witness>tbody>tr>td{
+    text-align: start;
+}
+.link-witness{
+    padding: .25em .4em;
+    height: 20.5px;
+}
+.div-imagen-witness {
+    float: left;
+    height: 45px;
+    width: 45px;
+    display:flex;
+    margin-right: 6px; 
+}
+.imagen-witness{
+    height: 100%;
+    width: 100%;
+}
+.media-body{
+    position: relative;
+}
+.table-witness{
+    border-radius: 5px;
+}
+.table-witness>thead>tr>td{
+    text-align: start;
+    font-weight: bold;
+    background-color: #004085;
+    color: #fff;
+}
 #cardHeed{
     border-bottom: #000000 solid 1px;
     margin-bottom: 10px;

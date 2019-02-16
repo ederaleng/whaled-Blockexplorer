@@ -1,7 +1,7 @@
 {
   "name": "whaled.live",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "moment": "^2.22.2",
     "query-string": "^6.2.0",
@@ -11,6 +11,8 @@
     "react-scripts": "2.0.4",
     "wlsjs": "^0.1.1"
   },
+  "license": "MIT",
+  "author": "ederaleng",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

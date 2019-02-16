@@ -2,7 +2,6 @@ import React from 'react';
 import DataU from './user/DataU'
 import InfoU from './user/InfoU'
 const usuario = ({ user,page }) => {
-    
     return (
         <div className="container">
             <div className="row">
