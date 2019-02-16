@@ -4,7 +4,7 @@ import queryString from 'query-string'
 import { Redirect } from 'react-router-dom'
 const Serviceusers = ({ match,location }) => {
     let query=queryString.parse(location.search)
-    let user=match.url.replace(/[^A-Za-z0-9]/g, '')
+    let user=match.url.replace(/\/|(@)/g, '')
     if(!user){
         return(
             <Redirect to={"/err"} />
