@@ -10,7 +10,7 @@ const Nav = () => {
             <a href="/witnesses" ><span style={{ marginLeft:12 }}>witnesses</span></a>
         </div>
         <form className="form-inline my-2 my-lg-0">
-        Whaled Hosting is sponsored for 3 months by <a href="https://whaleshares.io/@scipio" rel="noopener noreferrer" target="_blank">@scipio</a>
+        WhaleD server hosting is sponsored by <a href="https://whaleshares.io/@scipio" style={{ marginLeft:3 }} rel="noopener noreferrer" target="_blank">@scipio</a>
         </form>
     </div>
     );
