@@ -8,8 +8,6 @@ const usuario = ({ user,page }) => {
                 <div className="col">
                     <h1 className="titleUsername">{`@${user}`}</h1>
                 </div>
-                <div className="col">
-                </div>
             </div>
             <div className="row">
                 <InfoU user={user} />

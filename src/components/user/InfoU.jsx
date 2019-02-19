@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import wlsjs from 'wlsjs'
 import '../username.css'
+import Valaccount from './valaccount'
 import moment from 'moment'
 import OpenSource from './OpenSource'
 class InfoU extends Component {
@@ -71,6 +72,7 @@ class InfoU extends Component {
         if(this.state.data==null){
             return(
                 <div className="col-lg-4 col-sm-12">
+                    
                     <div className="alert alert-primary" role="alert">
                         <center>
                             <img src="https://courts.ms.gov/images_folder/demo/loading.gif" width="20%" height="20%" alt="loading" />
@@ -100,9 +102,11 @@ class InfoU extends Component {
                     <div className="alert alert-primary" role="alert">
                         <div className="row">
                             <div className="col">
+
                                 <center>
                                     <span>Reward Weight</span>
                                     <h4>{this.state.stake!=='loading...' ? `${this.state.stake} WP` : this.state.stake}</h4>
+                                    <Valaccount user={this.props.user} /><br />
                                     <span><small>Next Powerdown: {data.vesting_withdraw_rate}</small></span>
                                 </center>
                                 <div className="progress">

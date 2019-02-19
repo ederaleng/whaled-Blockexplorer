@@ -49,6 +49,7 @@ class Witnesses extends Component {
     }
     render() {
         var { witnessWLS }=this.state
+        console.log(this.state)
         if(!witnessWLS){
             return (
                 <div className="container">
@@ -66,9 +67,10 @@ class Witnesses extends Component {
                     <tr>
                     <td>Rank</td>
                     <td>Witness</td>
-                    <td>Reg. Fee</td>
+                    <td>Approval(WP)</td>
                     <td>Last Block</td>
                     <td>Miss</td>
+                    <td>Reg. Fee</td>
                     <td>Running Version</td>
                     <td>Full Perfil</td>
                     </tr>
@@ -76,7 +78,6 @@ class Witnesses extends Component {
                 <tbody>
                 {
                     witnessWLS.map((w,key)=>{
-                        
                         return (
                             <tr key={key}>
                                 <td>{key+1}</td>
@@ -99,12 +100,23 @@ class Witnesses extends Component {
                                         </div>
                                     </div>
                                 </td>
-                                <td>{ w.props.account_creation_fee  }</td>
                                 <td>
-                                    { w.last_confirmed_block_num }<br />
-                                    { this._blockGap2(this.state.Global.head_block_number,w.last_confirmed_block_num) }
+                                    <div>
+                                    
+                                    { `${ (parseFloat(parseFloat(this.state.Global.total_vesting_fund_steem)*(parseFloat(parseFloat(w.votes)/1000000) / parseFloat(this.state.Global.total_vesting_shares)),6)).toFixed(3) } WP` }<br />
+                                    { `${(parseFloat(parseFloat(this.state.Global.total_vesting_fund_steem)*(parseFloat(parseFloat(witnessWLS[(key>0 ? key-1 : 0)].votes)/1000000) / parseFloat(this.state.Global.total_vesting_shares)),6)-
+                                        parseFloat(parseFloat(this.state.Global.total_vesting_fund_steem)*(parseFloat(parseFloat(w.votes)/1000000) / parseFloat(this.state.Global.total_vesting_shares)),6)
+                                        ).toFixed(3)}
+                                        WP` }
+                                    </div>
+                                </td>
+                                <td>
+                                    change data
+                                    { /*w.last_confirmed_block_num*/ }
+                                    { /*this._blockGap2(this.state.Global.head_block_number,w.last_confirmed_block_num)*/ }
                                 </td>
                                 <td>{w.total_missed}</td>
+                                <td>{ w.props.account_creation_fee  }</td>
                                 <td><span className="badge badge-primary">{w.running_version}</span></td>
                                 <td>
                                     <Fullwitness witness={w.owner} ObjWitness={w} />
