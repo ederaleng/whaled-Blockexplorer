@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal,Button,Row,Col,Container } from 'react-bootstrap'
 import wlsjs from 'wlsjs'
 import moment from 'moment'
+import axios from 'axios'
 const { Body,Footer } = Modal
 
 wlsjs.api.setOptions({ url: 'https://wls.kennybll.com' });
@@ -19,63 +20,23 @@ class Fullwitness extends Component {
         };
         this.handleModal = this.handleModal.bind(this);
         this.LoadingData = this.LoadingData.bind(this)
-        this.testingDesing = this.testingDesing.bind(this)
-        
+    }
+    async LoadingData(){
+        let r=await axios.get(`/witnessfull?id=${this.state.witness}`)
+        let totalH={ 
+            totalBlockProducer:r.data.Blocks, 
+            totalVotes: r.data.Votes, 
+            votosWitnessProxy: r.data.WitnessProxy,
+            totalUpdatedWitness: r.data.Updateds
+        }
+        this.setState({ loading:!this.state.loading, Historial:totalH })
     }
     
-    LoadingData(status,start,total){
-        if(status===true){
-            var totalH=total;
-            wlsjs.api.getAccountHistory(this.state.witness, start, (start < 0) ? 10000 : Math.min(start, 10000), (err, result)=>{
-                if(err){
-                    return this.LoadingData(this.state.show,start,total)
-                }
-                var op=result.reverse()
-                var lastrxid
-                for(var i = 0; i < op.length; i++){
-                    if(op[i][1].op[0]==='producer_reward'){
-                        totalH.totalBlockProducer=total.totalBlockProducer+1
-                    }
-                    if(op[i][1].op[0]==="account_witness_vote"){
-                        totalH.totalVotes=op[i][1].op[1].approve===true ? totalH.totalVotes+1 : totalH.totalVotes-1
-                    }
-                    if(op[i][1].op[0]==="account_witness_proxy"){
-                        console.log(op[i][1].op)
-                        if(op[i][1].op[1].proxy===this.state.witness){
-                            totalH.votosWitnessProxy=totalH.votosWitnessProxy+1;
-                        }
-                    }
-                    if(op[i][1].op[0]==="witness_update"){
-                        totalH.totalUpdatedWitness=totalH.witness_update+1;
-                    }
-                    lastrxid=op[i][0]
-                }
 
-                if(op[0][0]>0 && lastrxid!==start){
-                    return this.LoadingData(this.state.show,lastrxid,totalH)
-                }
-                this.setState({ loading:!this.state.loading, Historial:totalH })
-            })
-        }
-    }
-    testingDesing(){
-        var Historial={  
-            totalBlockProducer:25556, 
-            totalVotes:230, 
-            votosWitnessProxy:1,
-            totalUpdatedWitness:6 }
-        this.setState({ loading:!this.state.loading, Historial })
-    }
     handleModal() {
         this.setState({ show: !this.state.show,loading:true });
         //this.testingDesing()
-        
-        this.LoadingData(!this.state.show, -1 , 
-            {   totalBlockProducer:0, 
-                totalUpdatedWitness:0, 
-                totalVotes:0 , 
-                votosWitnessProxy:0,
-            })
+        this.LoadingData()
     }
     
     render() {

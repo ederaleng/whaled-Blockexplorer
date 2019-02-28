@@ -95,6 +95,17 @@ class SwitchPages extends Component {
                         ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()})
                     </p>
                     );
+
+            case 'devfund':
+                    return (
+                        <p>
+                            <span className="trxtag" >virtual</span>
+                            <a href={`/@${obj[1].op[1].account}`} >{obj[1].op[1].account}</a> 
+                            {' '}<b>reward</b>{' '}
+                            <span>{obj[1].op[1].reward}</span> - 
+                            ({moment(moment.utc(obj[1].timestamp).valueOf()).fromNow()})
+                        </p>
+                        );
             case 'transfer':
                 return (
                     <p>

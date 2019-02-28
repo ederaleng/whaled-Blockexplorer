@@ -15,6 +15,7 @@ class Witnesses extends Component {
             wlsjs.api.setOptions({ url: 'https://wls.kennybll.com' });
             var Global=await wlsjs.api.getDynamicGlobalPropertiesAsync();
             var r=await wlsjs.api.getWitnessesByVoteAsync("", 100)
+            console.log(r)
             this.setState({ witnessWLS: r,Global })
         } catch (err) {
             console.log("err")
@@ -67,7 +68,7 @@ class Witnesses extends Component {
                     <tr>
                     <td>Rank</td>
                     <td>Witness</td>
-                    <td>Approval(WP)</td>
+                    <td>Approval(MV)</td>
                     <td>Last Block</td>
                     <td>Miss</td>
                     <td>Reg. Fee</td>
@@ -78,6 +79,7 @@ class Witnesses extends Component {
                 <tbody>
                 {
                     witnessWLS.map((w,key)=>{
+                        console.log(w)
                         return (
                             <tr key={key}>
                                 <td>{key+1}</td>
@@ -102,18 +104,13 @@ class Witnesses extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                    
-                                    { `${ (parseFloat(parseFloat(this.state.Global.total_vesting_fund_steem)*(parseFloat(parseFloat(w.votes)/1000000) / parseFloat(this.state.Global.total_vesting_shares)),6)).toFixed(3) } WP` }<br />
-                                    { `${(parseFloat(parseFloat(this.state.Global.total_vesting_fund_steem)*(parseFloat(parseFloat(witnessWLS[(key>0 ? key-1 : 0)].votes)/1000000) / parseFloat(this.state.Global.total_vesting_shares)),6)-
-                                        parseFloat(parseFloat(this.state.Global.total_vesting_fund_steem)*(parseFloat(parseFloat(w.votes)/1000000) / parseFloat(this.state.Global.total_vesting_shares)),6)
-                                        ).toFixed(3)}
-                                        WP` }
+                                    { `${(parseFloat(w.votes)/1000000000000).toFixed(3)}M` }<br />
                                     </div>
                                 </td>
                                 <td>
-                                    change data
-                                    { /*w.last_confirmed_block_num*/ }
-                                    { /*this._blockGap2(this.state.Global.head_block_number,w.last_confirmed_block_num)*/ }
+                                    
+                                    { w.last_confirmed_block_num }<br />
+                                    { this._blockGap2(this.state.Global.head_block_number,w.last_confirmed_block_num) }
                                 </td>
                                 <td>{w.total_missed}</td>
                                 <td>{ w.props.account_creation_fee  }</td>

@@ -145,7 +145,7 @@ class InfoU extends Component {
                             <tbody>
                                 {data.id ? <tr><th>id:</th><td>{data.id}</td></tr> : null}
                                 {data.name ? <tr><th>Name:</th><td>{data.name}</td></tr> : null}
-                                {data.proxy ? <tr>proxy:<th></th><td>{data.proxy}</td></tr> : null}
+                                {data.proxy ? <tr><th>proxy:</th><td>{data.proxy}</td></tr> : null}
                                 {data.created ? <tr><th>created:</th><td>{data.created}</td></tr> : null}
                                 {data.last_owner_update ? <tr><th>last owner update:</th><td>{data.last_owner_update}</td></tr> : null}
                                 {data.last_account_update ? <tr><th>last account update:</th><td>{data.last_account_update}</td></tr> : null}
@@ -178,12 +178,20 @@ class InfoU extends Component {
                         <p className="text-danger textoajust">{data.json_metadata}</p>
                     </div>
                     <div className="alert alert-primary" role="alert">
-                        <center><h4 className="alert-heading">witness votes</h4></center>
-                        <ol>
-                        { data.witness_votes.map( (witness,key)=>{ return <li key={key}>{witness}</li>  } ) }
-                        </ol>
-                        <hr />
-                        <b>witness votes free:</b>{ 30-(data.witness_votes.length) }
+                        
+                        {
+                            data.proxy ? 
+                            <div><b>proxy:</b> <a href={`/@${data.proxy}`}>@{data.proxy}</a></div>
+                            :
+                            <div>
+                            <center><h4 className="alert-heading">witness votes</h4></center>
+                            <ol>
+                            { data.witness_votes.map( (witness,key)=>{ return <li key={key}>{witness}</li>  } ) }
+                            </ol>
+                            <hr />
+                            <b>witness votes free:</b> {30-data.witness_votes.length}
+                            </div>
+                        }
                     </div>
                     <OpenSource />
                 </div>
