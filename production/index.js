@@ -4,8 +4,11 @@ const app = express();
 const favicon = require('serve-favicon');
 const Witness = require('./utils/witnessfull')
 const witnessModel = require('./models/witnesfull')
-const urlmlab= process.env.DB
+const urlmlab= process.env.DB;
 const mongoose = require('mongoose')
+const Price = require('./utils/prices')
+
+var priceData = new Price();
 
 mongoose.connect( urlmlab , { useNewUrlParser: true,useFindAndModify: false,  useCreateIndex: true } , (err)=>{
   if(err){
@@ -16,6 +19,11 @@ mongoose.connect( urlmlab , { useNewUrlParser: true,useFindAndModify: false,  us
     witness.init();
   },24*60*60*1000)
 });
+
+
+app.get('/pricesdata', (req,res)=>{
+  res.json(priceData.getPrices())
+})
 
 app.get('/witnessfull',(req,res)=>{
   var query=req.query
@@ -45,5 +53,5 @@ app.get('*', function(req, res) {
 });
 
 app.listen(3000,()=>{
-  console.log("localhost run in 5000")
+  console.log("localhost run in 3000")
 });
