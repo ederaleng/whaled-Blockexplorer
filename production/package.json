@@ -10,7 +10,7 @@
   "author": "ederaleng",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "express": "^4.16.4",
     "mongoose": "^5.7.5",
     "serve-favicon": "^2.5.0",
